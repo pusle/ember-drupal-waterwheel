@@ -2,5 +2,5 @@
 'use strict';
 
 module.exports = {
-  name: 'ember-drupal-waterwheel'
+  name: 'ember-drupal-waterwheel',
 };

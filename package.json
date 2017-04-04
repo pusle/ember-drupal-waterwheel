@@ -1,24 +1,31 @@
 {
   "name": "ember-drupal-waterwheel",
-  "version": "0.0.0",
-  "description": "The default blueprint for ember-cli addons.",
+  "version": "0.1.0",
+  "description": "Helps with integrating Ember and Drupal using JSON API.",
   "keywords": [
-    "ember-addon"
+    "ember-addon",
+    "Ember",
+    "Drupal"
   ],
   "license": "MIT",
-  "author": "",
+  "author": "Chris Hamper <chris.hamper@acquia.com>",
   "directories": {
     "doc": "doc",
     "test": "tests"
   },
-  "repository": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/acquia/ember-drupal-waterwheel"
+  },
   "scripts": {
     "build": "ember build",
     "start": "ember server",
     "test": "ember try:each"
   },
   "dependencies": {
-    "ember-cli-babel": "^5.1.7"
+    "ember-cli-babel": "^5.1.7",
+    "ember-data-drupal": "^0.9.0",
+    "ember-simple-auth": "^1.2.1"
   },
   "devDependencies": {
     "broccoli-asset-rev": "^2.4.5",
