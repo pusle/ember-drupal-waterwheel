@@ -26,7 +26,7 @@ module.exports = {
       + "    \"article\": {},  // Map 'article' Ember data model to Drupal/JSON API type 'node--article'" + EOL
       + "    \"user\": { entity: 'user', bundle: 'user' },  // Map 'user' model to type 'user--user'" + EOL
       + "    \"tag\": { entity: 'taxonomy-term', bundle: 'tags' }  // Map 'tag' model to type 'taxonomy-term--tags'" + EOL
-      + "  }" + EOL;
+      + "  };" + EOL;
 
     return this.insertIntoFile('config/environment.js', appConfig, {
       after: "APP: {\n"
