@@ -25,12 +25,12 @@ for a sample app that demonstrates some more advanced interactions with your Dru
 
 This adds a few support libraries to your project, as well as an Adapter and Serializer that 
 handle JSON API communication with the Drupal backend. An Authenticator, Authorizer, and Session 
-Service are also installed to manage OAuth2. Finally, a User model is added to store user entities
-fetched from the Drupal backend, which is needed to support authentication.
+Service are also installed to manage OAuth2. Finally, a "user" model is added to store user entities
+fetched from the Drupal backend (which is needed to support authentication.)
 
 Some configuration settings are added to your app's `config/environment.js` file. These will need 
 to be customized to point to your Drupal backend site and OAuth settings (see [Drupal Site 
-Configuration](#drupal-site-configuration)), and to specify which Drupal entities you'll be
+Configuration](#drupal-site-configuration)), as well as to specify which Drupal entities you'll be
 pulling data in for.
 
 ### Using Drupal Built-in Entities
