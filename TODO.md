@@ -1,4 +1,4 @@
-- [ ] fix filter query for multiple IDs
+- [x] fix filter query for multiple IDs
 - [ ] ember-data-drupal fixes upstream
 - [ ] add File entities
 - [ ] blueprint for generating built-in entities’ files
