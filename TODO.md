@@ -1,5 +1,5 @@
 - [x] fix filter query for multiple IDs
-- [ ] ember-data-drupal fixes upstream
+- [x] ember-data-drupal fixes upstream
 - [ ] add File entities
 - [ ] blueprint for generating built-in entities’ files
 - [ ] blueprint for generating custom entity’s files
@@ -7,5 +7,6 @@
 - [ ] split off separate blueprint for OAuth2
 - [ ] add more documentation re: Drupal entities and configuration
 - [ ] tests
+- [ ] v0.1.0
 - [ ] NPM package
 - [ ] Ember Observer

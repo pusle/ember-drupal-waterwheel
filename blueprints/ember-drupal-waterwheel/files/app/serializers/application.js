@@ -54,16 +54,4 @@ export default DrupalJSONAPISerializer.extend({
     });
     return out;
   },
-
-  // @todo - incorporate in ember-data-drupal
-  serializeHasMany(snapshot, json, relationship) {
-    // Only serialize hasMany relationships that actually contain items
-    let hasMany = snapshot.hasMany(relationship.key);
-    if (hasMany !== undefined) {
-      if (hasMany.length) {
-        this._super(...arguments);
-      }
-    }
-  }
-
 });
