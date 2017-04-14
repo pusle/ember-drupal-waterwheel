@@ -4,6 +4,10 @@ import OAuth2PasswordGrant from 'ember-simple-auth/authenticators/oauth2-passwor
 
 const { RSVP } = Ember;
 
+/**
+ * Use the ember-simple-auth library's OAuth 2.0 Password Grant authentication
+ * to authenticate with Drupal's simple_oauth module.
+ */
 export default OAuth2PasswordGrant.extend({
   serverTokenEndpoint: ENV.APP.host + ENV.APP.oauth2TokenEndpoint,
   clientId: ENV.APP.oauth2ClientId,

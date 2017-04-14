@@ -2,6 +2,10 @@ import Ember from 'ember';
 import DS from 'ember-data';
 import ENV from '../config/environment';
 
+/**
+ * A list of MIME types that are often viewable inside a web browser. Used for
+ * computing the isWebImage property in the file model.
+ */
 const webImageMimeTypes = [
   'image/jpeg',
   'image/gif',
@@ -11,20 +15,11 @@ const webImageMimeTypes = [
   'image/x-icon',
 ];
 
+/**
+ * Defines the "file" model, which holds a "File" Drupal entity.
+ */
 export default DS.Model.extend({
-  uuid: DS.attr(),
   status: DS.attr('boolean'),
-  created: DS.attr(),
-  createdDate: Ember.computed('created', function () {
-    let created = this.get('created');
-    if (created) {
-      let date = new Date(created * 1000);
-      return date.toString();
-    }
-    else {
-      return "[No Date]";
-    }
-  }),
   filename: DS.attr(),
   filemime: DS.attr(),
   filesize: DS.attr(),

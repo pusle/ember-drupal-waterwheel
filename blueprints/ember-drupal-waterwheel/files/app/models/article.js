@@ -1,9 +1,10 @@
 import Ember from 'ember';
 import DS from 'ember-data';
 
+/**
+ * Defines the "article" model, which holds an "Article" Drupal entity.
+ */
 export default DS.Model.extend({
-  nid: DS.attr(),
-  uuid: DS.attr(),
   status: DS.attr('boolean'),
   created: DS.attr(),
   createdDate: Ember.computed('created', function () {
@@ -13,11 +14,23 @@ export default DS.Model.extend({
       return date.toString();
     }
     else {
-      return "[No Date]";
+      return "";
+    }
+  }),
+  changed: DS.attr(),
+  changedDate: Ember.computed('changed', function () {
+    let changed = this.get('changed');
+    if (changed) {
+      let date = new Date(changed * 1000);
+      return date.toString();
+    }
+    else {
+      return "";
     }
   }),
   uid: DS.belongsTo('user', { async: true }),
   title: DS.attr(),
   body: DS.attr(),
   field_tags: DS.hasMany('tag', { async: true }),
+  field_image: DS.belongsTo('file', { async: true })
 });

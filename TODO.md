@@ -1,8 +1,11 @@
 - [x] fix filter query for multiple IDs
 - [x] ember-data-drupal fixes upstream
-- [ ] add File entities
-- [ ] blueprint for generating built-in entities’ files
+- [x] add File entities
+- [x] add changed date to Article model
+- [x] remove entity IDs, separate uuid from models
+- [ ] only update portions of models that have changed
 - [ ] blueprint for generating custom entity’s files
+- [ ] separate blueprints for generating built-in entities’ files
 - [ ] pull in login form component
 - [ ] split off separate blueprint for OAuth2
 - [ ] add more documentation re: Drupal entities and configuration

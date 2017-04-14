@@ -4,8 +4,17 @@ import { singularize } from 'ember-inflector';
 
 const { normalizeModelName } = DS;
 
+/**
+ * This Serializer customizes Ember Data's interactions with JSON API endpoints
+ * on the Drupal backend. More specifically, it alters the way Ember models are
+ * converted into JSON text that is added to an HTTP request sent to the Drupal
+ * backend, and how JSON text received in the response is converted back to an
+ * Ember model.
+ *
+ * This customizes the Serializer provided by the ember-data-drupal Ember addon.
+ */
+
 export default DrupalJSONAPISerializer.extend({
-  // @todo - incorporate in ember-data-drupal
   modelNameFromPayloadKey(key) {
     const parts = key.split('--');
     if (parts.length === 2) {
@@ -16,7 +25,6 @@ export default DrupalJSONAPISerializer.extend({
     return singularize(normalizeModelName(key));
   },
 
-  // @todo - incorporate in ember-data-drupal
   payloadKeyFromModelName(modelName) {
     const drupalMapper = this.get('drupalMapper');
     if (drupalMapper.isMapped(modelName)) {
@@ -27,7 +35,6 @@ export default DrupalJSONAPISerializer.extend({
     return modelName;
   },
 
-  // @todo - incorporate in ember-data-drupal
   keyForRelationship(key /*, typeClass, method*/) {
     // Prevent dash-ification of underscores in relationship keys
     return key;
@@ -35,14 +42,15 @@ export default DrupalJSONAPISerializer.extend({
 
   extractErrors(store, typeClass, payload /*, id*/) {
     // Adapt validation errors returned from the JSON API module so that they
-    // can be easily displayed inline in an edit form.
+    // can be easily displayed inline in an edit form, etc.
     payload = this._super(...arguments);
 
     let out = {};
     Object.keys(payload).forEach(key => {
       let error = payload[key].toString();
 
-      // Remove the field path (ex. 'title:', 'body.0.format:', etc.) from the error message
+      // @todo - uncomment if desired:
+      // Remove the field path ('title:', 'body.0.format:', etc.) from the error message
       /* let splitPos = error.indexOf(':');
        if (splitPos > 0) {
        error = error.substring(splitPos + 2);
@@ -53,5 +61,5 @@ export default DrupalJSONAPISerializer.extend({
       out[key] = error;
     });
     return out;
-  },
+  }
 });
