@@ -22,10 +22,12 @@ module.exports = {
       + "      oauth2ClientId: '11111111-2222-3333-4444-555555555555',  // @todo - Fill in your client UUID" + EOL;
 
     const emberDataDrupalConfig
-      = "  ENV.drupalEntityModels = {  // @todo - modify to map all entities you want to use" + EOL
+      = "  // Map Drupal built-in Entities to Ember models with simplified one-part names" + EOL
+      + "  ENV.drupalEntityModels = {  // @todo - map any custom entities you want to use" + EOL
       + "    \"article\": {},  // Map 'article' Ember data model to Drupal/JSON API type 'node--article'" + EOL
-      + "    \"user\": { entity: 'user', bundle: 'user' },  // Map 'user' model to type 'user--user'" + EOL
-      + "    \"tag\": { entity: 'taxonomy_term', bundle: 'tags' }  // Map 'tag' model to type 'taxonomy-term--tags'" + EOL
+      + "    \"user\": { entity: 'user', bundle: 'user' },  // Map 'user' model to 'user--user'" + EOL
+      + "    \"file\": { entity: 'file', bundle: 'file' },  // Map 'file' model to 'file--file'" + EOL
+      + "    \"tag\": { entity: 'taxonomy_term', bundle: 'tags' }  // Map 'tag' model to 'taxonomy-term--tags'" + EOL
       + "  };" + EOL;
 
     return this.insertIntoFile('config/environment.js', appConfig, {
