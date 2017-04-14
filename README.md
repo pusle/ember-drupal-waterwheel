@@ -109,6 +109,32 @@ your app will be served, such as:
 * `ember serve`
 * Visit your app at [http://localhost:4200](http://localhost:4200).
 
+### Running Using FastBoot (Server-side Rendering)
+
+Ember provides the FastBoot addon for server-side rendering. Server-side redering has the advantages of allowing your
+app to work on browsers that don't have JavaScript enabled, and can also help many search engines to index your app's
+content. It may also speed up initial page load times.
+
+To use FastBoot in your Ember app, you'll first need to install the addon:
+
+* `ember install ember-cli-fastboot`
+
+FastBoot has some built-in security measures that require a list of the domains you'll be serving your app from the be
+whitelisted. This can be done in your app's `config/environment.js` file by adding the following lines inside the
+`var ENV = { ... }` definition:
+
+```javascript
+fastboot: {
+  hostWhitelist: ['yourbackendsite.com', 'yourstagingsite.com', /^localhost:\d+$/]
+}
+```
+This will whitelist serving the app on your production and staging environments, as well as locally at any port.
+
+Now, you can start serving your app with FastBoot:
+
+* `ember fastboot --serve-assets`
+* Visit your app at [http://localhost:3000](http://localhost:3000).
+
 ### Running Tests
 
 * `npm test` (Runs `ember try:each` to test your addon against multiple Ember versions)
