@@ -2,15 +2,16 @@ const chalk = require('chalk');
 const EOL = require('os').EOL;
 
 module.exports = {
+  description: "Generates an adapter, serializer, and service for integrating with a Drupal backend. Also generates models for Drupal's built-in entities.",
+
   normalizeEntityName: function() {
     return "ember-drupal-waterwheel";
-  }, // no-op since we're just adding dependencies
+  },
 
   beforeInstall: function() {
     return this.addAddonsToProject({
         packages: [
           { name: 'ember-data-drupal', target: '^0.9.0' },
-          { name: 'ember-simple-auth', target: '^1.2.1' }
         ]
       });
   },

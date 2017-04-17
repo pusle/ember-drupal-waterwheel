@@ -3,13 +3,14 @@
 - [x] add File entities
 - [x] add changed date to Article model
 - [x] remove entity IDs, separate uuid from models
-- [ ] only update portions of models that have changed
-- [ ] blueprint for generating custom entity’s files
+- [x] pull in login form component
+- [x] split off separate blueprint for OAuth2
+- [x] add more documentation re: Drupal entities and configuration
 - [ ] separate blueprints for generating built-in entities’ files
-- [ ] pull in login form component
-- [ ] split off separate blueprint for OAuth2
-- [ ] add more documentation re: Drupal entities and configuration
 - [ ] tests
+- [ ] split out separate docs for FastBoot, custom Entities
 - [ ] v0.1.0
 - [ ] NPM package
 - [ ] Ember Observer
+- [ ] blueprint for generating custom entity’s files
+- [ ] only update portions of models that have changed

@@ -1,0 +1,11 @@
+{{#bs-form model=this onSubmit=(action 'authenticate') as |form|}}
+  {{form.element label="Username" property="username" required=true}}
+  {{form.element label="Password" controlType="password" property="password" required=true}}
+  {{bs-button defaultText="Log in" type="primary" buttonType="submit"}}
+
+  {{#if errorMessage}}
+      <div class="alert alert-danger" role="alert">
+          <p>Error: {{errorMessage}}</p>
+      </div>
+  {{/if}}
+{{/bs-form}}
