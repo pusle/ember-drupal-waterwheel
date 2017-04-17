@@ -1,0 +1,10 @@
+{{outlet}}
+
+<h2>{{article.title}}</h2>
+by {{article.uid.name}}, created {{article.createdDate}}
+
+{{#if article.field_image.isWebImage}}
+  <img src="{{article.field_image.absoluteUrl}}">
+{{/if}}
+
+{{{article.body}}}
