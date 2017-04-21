@@ -21,6 +21,19 @@ for a sample app that demonstrates some more advanced interactions with your Dru
 
 ## Installation
 
+If you have not yet created an Ember application, generate a new one:
+
+* `ember new your-new-app-name`
+
+and get rid of the welcome message that is added by default by removing these lines from `app/templates/application.hbs`:
+```handlebars
+{{!-- The following component displays Ember's default welcome message. --}}
+{{welcome-page}}
+{{!-- Feel free to remove this! --}}
+```
+
+Install the ember-drupal-waterwheel addon:
+
 * `ember install ember-drupal-waterwheel`
 
 This adds a few support libraries to your project, as well as an Adapter and Serializer that 
