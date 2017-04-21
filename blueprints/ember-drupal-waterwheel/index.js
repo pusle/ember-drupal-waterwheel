@@ -23,8 +23,9 @@ module.exports = {
       + "      oauth2ClientId: '11111111-2222-3333-4444-555555555555',  // @todo - Fill in your client UUID" + EOL;
 
     const emberDataDrupalConfig
-      = "  // Map Drupal built-in Entities to Ember models with simplified one-part names" + EOL
-      + "  ENV.drupalEntityModels = {  // @todo - map any custom entities you want to use" + EOL
+      = "  // Map Drupal Entities to Ember models with simplified one-part names" + EOL
+      + "  ENV.drupalEntityModels = {" + EOL
+      + "    // @todo - map any additional Drupal entities you want to use" + EOL
       + "    \"article\": {},  // Map 'article' Ember data model to Drupal/JSON API type 'node--article'" + EOL
       + "    \"user\": { entity: 'user', bundle: 'user' },  // Map 'user' model to 'user--user'" + EOL
       + "    \"file\": { entity: 'file', bundle: 'file' },  // Map 'file' model to 'file--file'" + EOL

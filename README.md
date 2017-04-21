@@ -48,14 +48,17 @@ are customizations or coding choices you can make.
 
 ### Using Custom Drupal Entities
 
-1. Generate boilerplate model, route, and template files for your custom entity:
-    * `ember generate ember-drupal-entity your_entity_machine_name`
+1. Generate boilerplate model, route, and template files for your custom entity/content type (a one-word, simplified `entity_name` is 
+highly recommended):
+    * `ember generate drupal-entity entity_name`
+    
+1. Adjust the custom entity's model as needed to include all fields you're interested in from the Drupal entity
 
-1. Adjust the custom entity's model as needed to include all fields you're interested in.
+1. Configure mapping of the Drupal entity to the Ember model in `config/environment.js` (see @todo)
 
-1. Fill in the custom entity's template file to describe how the entity should be displayed.
+1. Fill in the custom entity's template file to describe how the entity should be displayed
 
-See the 'article' model, route, and template files from [ember-drupal-waterwheel-app](https://github.com/acquia/ember-drupal-waterwheel-app) 
+See the "article" model, route, and template files from [ember-drupal-waterwheel-app](https://github.com/acquia/ember-drupal-waterwheel-app) 
 for an example of how these files might be implemented.
 
 ## Drupal Site Configuration

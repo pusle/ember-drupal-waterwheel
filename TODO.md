@@ -6,11 +6,12 @@
 - [x] pull in login form component
 - [x] split off separate blueprint for OAuth2
 - [x] add more documentation re: Drupal entities and configuration
-- [ ] separate blueprints for generating built-in entities’ files
-- [ ] tests
-- [ ] split out separate docs for FastBoot, custom Entities
+- [x] separate blueprints for generating built-in entities’ files
+- [x] blueprint for generating a custom entity’s files
+- [ ] create user prompts to install "child" blueprints from main blueprint
 - [ ] v0.1.0
 - [ ] NPM package
 - [ ] Ember Observer
-- [ ] blueprint for generating custom entity’s files
+- [ ] split out separate docs for FastBoot, custom Entities
+- [ ] tests?
 - [ ] only update portions of models that have changed
