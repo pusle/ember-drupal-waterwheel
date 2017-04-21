@@ -7,6 +7,6 @@ export default DS.Model.extend({
   name: DS.attr('string'),
   description: DS.attr(),
 
-  // Link back to articles tagged with this tag. This can be made a one-way relationship by commenting this out.
-  articles: DS.hasMany('article', { async: true })
+  // @todo - Link back to articles tagged with this tag by un-commenting this.
+//  articles: DS.hasMany('article', { async: true })
 });
