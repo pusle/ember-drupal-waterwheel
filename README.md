@@ -109,11 +109,12 @@ your app will be served, such as:
 * `ember serve`
 * Visit your app at [http://localhost:4200](http://localhost:4200).
 
-### Running Using FastBoot (Server-side Rendering)
+### Running Using FastBoot (Server-side Rendering) [Experimental]
 
 Ember provides the FastBoot addon for server-side rendering. Server-side redering has the advantages of allowing your
 app to work on browsers that don't have JavaScript enabled, and can also help many search engines to index your app's
-content. It may also speed up initial page load times.
+content. It may also speed up initial page load times. **(Note that FastBoot is considered experimental until it reaches
+its 1.0 release, and as such is not guaranteed to work!)**
 
 To use FastBoot in your Ember app, you'll first need to install the addon:
 
@@ -129,6 +130,23 @@ fastboot: {
 }
 ```
 This will whitelist serving the app on your production and staging environments, as well as locally at any port.
+
+If you're using this addon's OAuth 2.0 features, you'll need to switch the session store to use cookies instead of
+browser local storage. Do this by creating `app/session-stores/application.js` with the following two lines:
+
+```javascript
+import CookieStore from 'ember-simple-auth/session-stores/cookie';
+export default CookieStore.extend();
+```
+
+Finally, whitelist a library required for ember-simple-auth to work with FastBoot by adding these lines at the bottom 
+of your app's package.json file:
+
+```javascript
+  "fastbootDependencies": [
+    "node-fetch"
+  ]
+```
 
 Now, you can start serving your app with FastBoot:
 
