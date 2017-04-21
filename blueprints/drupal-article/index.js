@@ -35,7 +35,7 @@ module.exports = {
 };
 
 function updateRouter(action, options) {
-  var name = 'login';
+  var name = 'article';
   var actionColorMap = {
     add: 'green',
     remove: 'red'
