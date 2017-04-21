@@ -26,27 +26,25 @@ for a sample app that demonstrates some more advanced interactions with your Dru
 This adds a few support libraries to your project, as well as an Adapter and Serializer that 
 handle JSON API communication with the Drupal backend. An Authenticator, Authorizer, and Session 
 Service are also installed to manage OAuth2. Finally, a "user" model is added to store user entities
-fetched from the Drupal backend (which is needed to support authentication.)
+fetched from the Drupal backend (which is needed to support authentication and storing ownership of entities.)
 
 Some configuration settings are added to your app's `config/environment.js` file. These will need 
 to be customized to point to your Drupal backend site and OAuth settings (see [Drupal Site 
-Configuration](#drupal-site-configuration)), as well as to specify which Drupal entities you'll be
-pulling data in for.
+Configuration](#drupal-site-configuration)) as needed, as well as to specify which Drupal entities you'll be
+pulling data in for. Search for "@todo" to find thing that will need to be customized for your application.
 
 ### Using Drupal Built-in Entities
 
-If you'd also like to add models and routes to your app for Drupal's built-in entities 
+If you'd also like to add models, routes, and templates to your app for Drupal's built-in entities
 (Articles, Tags, Files, and Basic Pages), You can run:
-* `ember generate ember-drupal-article`
-* `ember generate ember-drupal-tag`
-* `ember generate ember-drupal-file`
-* `ember generate ember-drupal-basic-page`
+* `ember generate drupal-article`
+* `ember generate drupal-tag`
+* `ember generate drupal-file`
+* `ember generate drupal-basic-page`
 
-From here, you can generate Ember template files for these models as you typically would using 
-the Ember CLI:
-* `ember g template article`
-* Edit the generated template file as desired
-* and repeat...
+From here, you can edit the Ember template files for these models as you typically would using
+the Ember CLI. It's also a good idea to search for "@todo" in the generated files, to see if there
+are customizations or coding choices you can make.
 
 ### Using Custom Drupal Entities
 
@@ -62,24 +60,12 @@ for an example of how these files might be implemented.
 
 ## Drupal Site Configuration
 
-1. Your Drupal backend needs to have the JSON API and Simple OAuth contrib modules enabled. From your Drupal root, run:
+1. Your Drupal backend needs to have the JSON API contrib module enabled. From your Drupal root, run:
     * `composer require "drupal/jsonapi" "drupal/simple_oauth:~2.0" -o`
-    * `drush en -y jsonapi simple_oauth`
+    * `drush en -y jsonapi`
 
-1. Generate encryption keys for OAuth:
-    * `openssl genrsa -out private.key 2048`
-    * `openssl rsa -in private.key -pubout > public.key`
-
-1. On your Drupal site, browse to `/admin/config/people/simple_oauth` and enter the full paths to both encryption keys 
-in the Simple OAuth Settings.
-
-1. Browse to `/admin/config/people/simple_oauth/oauth2_client/add` to create OAuth client settings for this app. For 
-"Label", specify something like "Ember Waterwheel app". Leave all other settings at their defaults and click "Save". 
-Copy the UUID from the list of OAuth clients and paste it into this application's `config/environment.js` at the location 
-marked with a @todo. Also fill in the Drupal site's URL in that same file.
-
-1. CORS needs to be enabled on the Drupal site. Place/modify the following lines at the bottom of your 
-`sites/default/services.yml` file:
+1. Cross-Origin Resource Sharing (CORS) needs to be enabled on the Drupal site. Modify the related lines near the
+bottom of your `sites/default/services.yml` file:
 
 ```yaml
 cors.config:
@@ -98,11 +84,30 @@ cors.config:
   supportsCredentials: true
 ```
 
-Ideally, the `allowedOrigins` setting should be changed to a list of permitted origins from which 
+To increase security, the `allowedOrigins` setting should be changed to a list of permitted origins from which 
 your app will be served, such as:
 ```yaml
   allowedOrigins: ['localhost:4200', 'localhost:3000', 'yourbackendsite.com']
 ```
+
+### Drupal Authentication Using OAuth 2.0
+
+1. If you don't need to perform authentication to your Drupal backend, you're done configuring Drupal! Otherwise,
+you'll also need to enable and configure the Simple OAuth contrib module:
+    * `composer require "drupal/simple_oauth:~2.0" -o`
+    * `drush en -y simple_oauth`
+
+1. Generate encryption keys for Simple OAuth:
+    * `openssl genrsa -out private.key 2048`
+    * `openssl rsa -in private.key -pubout > public.key`
+
+1. On your Drupal site, browse to `/admin/config/people/simple_oauth` and enter the full paths to both encryption keys
+in the Simple OAuth Settings.
+
+1. Browse to `/admin/config/people/simple_oauth/oauth2_client/add` to create OAuth client settings for this app. For
+"Label", specify something like "Ember Waterwheel app". Leave all other settings at their defaults and click "Save".
+Copy the UUID from the list of OAuth clients and paste it into this application's `config/environment.js` at the location
+marked with a @todo. Also fill in the Drupal site's URL in that same file.
 
 ## Running / Development
 
