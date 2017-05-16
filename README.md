@@ -1,14 +1,13 @@
 # Ember-Drupal Waterwheel
 
-This Ember addon provides blueprints to help you get your Ember application up-and-running with a 
-Drupal website as the data/content backend. You can start a new Ember app from scratch and add 
+The intent of this addon is to give Ember developers a set of tools to quickly integrate with 
+a Drupal site for use as Ember Data's backend. It provides blueprints to help you get your Ember application connected
+with a Drupal website as the data/content backend. You can start a new Ember app from scratch and add
 these blueprints from the start, or add them to an existing Ember app.
 
-The intent of this addon is to give Ember developers a set of tools to quickly integrate with 
-a Drupal site for use as Ember Data's backend.
-
 **Also check out [ember-drupal-waterwheel-app](https://github.com/acquia/ember-drupal-waterwheel-app) 
-for a sample app that demonstrates some more advanced interactions with your Drupal backend.**
+for a reference application that illustrates what can be easily built using this addon, as well as demonstrating
+how to modify entities on your Drupal backend from an Ember app.**
 
 ## Requirements
 
@@ -16,7 +15,7 @@ for a sample app that demonstrates some more advanced interactions with your Dru
 * [Node.js and npm](https://nodejs.org/)
 * [Bower](https://bower.io/)
 * [Ember CLI](https://ember-cli.com/)
-* [PhantomJS](http://phantomjs.org/) (only required for tests)
+* [PhantomJS](http://phantomjs.org/) (only required for automated tests)
 * A [Drupal 8](https://www.drupal.org) site with your content
 
 ## Installation
@@ -25,54 +24,31 @@ If you have not yet created an Ember application, generate a new one:
 
 * `ember new your-new-app-name`
 
-and get rid of the welcome message that is added by default by removing these lines from `app/templates/application.hbs`:
+and remove the default welcome message by removing these lines from `app/templates/application.hbs`:
 ```handlebars
 {{!-- The following component displays Ember's default welcome message. --}}
 {{welcome-page}}
 {{!-- Feel free to remove this! --}}
 ```
 
-Install the ember-drupal-waterwheel addon:
+Install this addon:
 
 * `ember install ember-drupal-waterwheel`
 
-This adds a few support libraries to your project, as well as an Adapter and Serializer that 
-handle JSON API communication with the Drupal backend. An Authenticator, Authorizer, and Session 
-Service are also installed to manage OAuth2. Finally, a "user" model is added to store user entities
-fetched from the Drupal backend (which is needed to support authentication and storing ownership of entities.)
+You'll see a series of prompts asking which built-in Drupal entities, and other features like OAuth 2.0 authentication,
+you'd like to install.
 
-Some configuration settings are added to your app's `config/environment.js` file. These will need 
-to be customized to point to your Drupal backend site and OAuth settings (see [Drupal Site 
-Configuration](#drupal-site-configuration)) as needed, as well as to specify which Drupal entities you'll be
-pulling data in for. Search for "@todo" to find thing that will need to be customized for your application.
+The addon will add a few required libraries to your project, as well as Adapter and Serializer classes that customize
+JSON API communication to be compatible with the Drupal backend. If you choose to use OAuth 2.0, an Authenticator,
+Authorizer, and Session Service are also created to manage OAuth2. Finally, a "user" model is created to store user
+entities fetched from the Drupal backend (which is necessary to support authentication, and to represent user
+ownership of entities.)
 
-### Using Drupal Built-in Entities
-
-If you'd also like to add models, routes, and templates to your app for Drupal's built-in entities
-(Articles, Tags, Files, and Basic Pages), You can run:
-* `ember generate drupal-article`
-* `ember generate drupal-tag`
-* `ember generate drupal-file`
-* `ember generate drupal-basic-page`
-
-From here, you can edit the Ember template files for these models as you typically would using
-the Ember CLI. It's also a good idea to search for "@todo" in the generated files, to see if there
-are customizations or coding choices you can make.
-
-### Using Custom Drupal Entities
-
-1. Generate boilerplate model, route, and template files for your custom entity/content type (a one-word, simplified `entity_name` is 
-highly recommended):
-    * `ember generate drupal-entity entity_name`
-    
-1. Adjust the custom entity's model as needed to include all fields you're interested in from the Drupal entity
-
-1. Configure mapping of the Drupal entity to the Ember model in `config/environment.js` (see @todo)
-
-1. Fill in the custom entity's template file to describe how the entity should be displayed
-
-See the "article" model, route, and template files from [ember-drupal-waterwheel-app](https://github.com/acquia/ember-drupal-waterwheel-app) 
-for an example of how these files might be implemented.
+Some configuration settings will be added to your app's `config/environment.js` file. These will need
+to be customized to match the base URL of your Drupal backend site and your OAuth settings (see
+[Drupal Authentication Using OAuth 2.0](#drupal-authentication-using-oauth-2.0)). You'll also see configuration for
+`ENV.drupalEntityModels`, where you specify which Drupal entities you'll be using from the Ember app. Search for
+"@todo" to find any items that will need to be customized for your application.
 
 ## Drupal Site Configuration
 
@@ -125,10 +101,46 @@ in the Simple OAuth Settings.
 Copy the UUID from the list of OAuth clients and paste it into this application's `config/environment.js` at the location
 marked with a @todo. Also fill in the Drupal site's URL in that same file.
 
+## Using Custom Drupal Entities
+
+You can use custom Drupal entities in your Ember app by creating the necessary Ember model, template, and route. A
+blueprint is provided by this addon to make the process easier.
+
+1. Generate boilerplate model, route, and template files for your custom entity/content type (a one-word, simplified `entity_name` is
+highly recommended):
+    * `ember generate drupal-entity entity_name`
+
+1. Adjust the custom entity's model as needed to include all fields you're interested in from the Drupal entity
+
+1. Configure mapping of the Drupal entity to the Ember model in `config/environment.js` (see @todo)
+
+1. Fill in the custom entity's template file to describe how the entity should be displayed
+
+See the "article" model, route, and template files from [ember-drupal-waterwheel-app](https://github.com/acquia/ember-drupal-waterwheel-app)
+for a more detailed example of how these files might be implemented.
+
+## Using Drupal Built-in Entities
+
+If you'd like to use Drupal's built-in entities (article, tag, and file), but you didn't choose to install these at the
+time you installed this addon, you can manually install the necessary model, template, and route for these entities:
+* `ember generate drupal-article`
+* `ember generate drupal-tag`
+* `ember generate drupal-file`
+
+You can install the files for any, or all, of these entities as needed. From here, you can edit the Ember template
+files for these models as you typically would using
+the Ember CLI. It's also a good idea to search for "@todo" in the generated files, to see if there
+are customizations or coding choices you can make.
+
 ## Running / Development
+
+During development, you can build and serve your Ember app to a browser by running:
 
 * `ember serve`
 * Visit your app at [http://localhost:4200](http://localhost:4200).
+
+For running in production, you'll want to do some research. Some helpful resources to get started:
+[Ember CLI deploy resources](http://ember-cli-deploy.com/resources/)
 
 ### Running Using FastBoot (Server-side Rendering) [Experimental]
 

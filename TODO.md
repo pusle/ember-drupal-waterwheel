@@ -8,7 +8,7 @@
 - [x] add more documentation re: Drupal entities and configuration
 - [x] separate blueprints for generating built-in entities’ files
 - [x] blueprint for generating a custom entity’s files
-- [ ] create user prompts to install "child" blueprints from main blueprint
+- [x] create user prompts to install "child" blueprints from main blueprint
 - [ ] v0.1.0
 - [ ] NPM package
 - [ ] Ember Observer
