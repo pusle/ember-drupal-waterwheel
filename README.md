@@ -1,13 +1,17 @@
+![Waterwheel Ecosystem](https://raw.githubusercontent.com/acquia/waterwheel-js/assets/waterwheel.png)
+
 # Ember-Drupal Waterwheel
 
-The intent of this addon is to give Ember developers a set of tools to quickly integrate with 
+The intent of this addon is to give Ember developers a set of tools to quickly integrate with
 a Drupal site for use as Ember Data's backend. It provides blueprints to help you get your Ember application connected
 with a Drupal website as the data/content backend. You can start a new Ember app from scratch and add
 these blueprints from the start, or add them to an existing Ember app.
 
-**Also check out [ember-drupal-waterwheel-app](https://github.com/acquia/ember-drupal-waterwheel-app) 
+**Also check out [ember-waterwheel-app](https://github.com/acquia/ember-waterwheel-app)
 for a reference application that illustrates what can be easily built using this addon, as well as demonstrating
 how to modify entities on your Drupal backend from an Ember app.**
+
+---
 
 ## Requirements
 
@@ -76,7 +80,7 @@ cors.config:
   supportsCredentials: true
 ```
 
-To increase security, the `allowedOrigins` setting should be changed to a list of permitted origins from which 
+To increase security, the `allowedOrigins` setting should be changed to a list of permitted origins from which
 your app will be served, such as:
 ```yaml
   allowedOrigins: ['localhost:4200', 'localhost:3000', 'yourbackendsite.com']
@@ -116,7 +120,7 @@ highly recommended):
 
 1. Fill in the custom entity's template file to describe how the entity should be displayed
 
-See the "article" model, route, and template files from [ember-drupal-waterwheel-app](https://github.com/acquia/ember-drupal-waterwheel-app)
+See the "article" model, route, and template files from [ember-waterwheel-app](https://github.com/acquia/ember-waterwheel-app)
 for a more detailed example of how these files might be implemented.
 
 ## Using Drupal Built-in Entities
@@ -172,7 +176,7 @@ import CookieStore from 'ember-simple-auth/session-stores/cookie';
 export default CookieStore.extend();
 ```
 
-Finally, whitelist a library required for ember-simple-auth to work with FastBoot by adding these lines at the bottom 
+Finally, whitelist a library required for ember-simple-auth to work with FastBoot by adding these lines at the bottom
 of your app's package.json file:
 
 ```javascript
@@ -203,7 +207,7 @@ Now, you can start serving your app with FastBoot:
 * [ember-cli](https://ember-cli.com/)
 * [Ember Data](https://github.com/emberjs/data)
 * [Drupal JSON API module](http://https://www.drupal.org/project/jsonapi/)
-* [ember-drupal-waterwheel-app](https://github.com/acquia/ember-drupal-waterwheel-app)
+* [ember-waterwheel-app](https://github.com/acquia/ember-waterwheel-app)
 * [JSON API specification](http://jsonapi.org/format/)
 * Ember development browser extensions:
   * [Ember Inspector for Chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
