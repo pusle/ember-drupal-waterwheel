@@ -1,10 +1,10 @@
 {{outlet}}
 
-<h2>{{article.title}}</h2>
-by {{article.uid.name}}, created {{article.createdDate}}
+<h2>{{model.title}}</h2>
+<p>by {{model.uid.name}}, created {{model.createdDate}}</p>
 
-{{#if article.field_image.isWebImage}}
-  <img src="{{article.field_image.absoluteUrl}}">
+{{#if model.field_image.isWebImage}}
+  <img src="{{model.field_image.absoluteUrl}}">
 {{/if}}
 
-{{{article.body}}}
+{{{model.body.value}}}

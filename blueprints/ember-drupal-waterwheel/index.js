@@ -43,8 +43,7 @@ module.exports = {
         .then(self.entityBlueprint('file', data.file))
         .then(self.entityBlueprint('tag', data.tag))
         .then(self.oauth2Blueprint(data.oauth))
-        .then(self.configureEmberDataDrupal())
-        .then(self.configureApp());
+        .then(self.configureEnvironment());
     });
   },
 
@@ -92,20 +91,12 @@ module.exports = {
     });
   },
 
-  configureApp: function() {
+  configureEnvironment: function() {
     const appConfig
       = "      host: 'http://yourbackendsite.com',  // @todo - Fill in your Drupal backend URL" + EOL
       + "      oauth2TokenEndpoint: '/oauth/token'," + EOL
       + "      oauth2ClientId: '11111111-2222-3333-4444-555555555555',  // @todo - Fill in your client UUID" + EOL;
 
-    return this.insertIntoFile('config/environment.js', appConfig, {
-      after: "APP: {\n"
-    }).then(() => {
-      this.ui.writeLine(chalk.green('Added Drupal host and OAuth APP configuration to ') + 'config/environment.js');
-    });
-  },
-
-  configureEmberDataDrupal: function () {
     const emberDataDrupalConfig
       = "  // Map Drupal Entities to Ember models with simplified one-part names" + EOL
       + "  ENV.drupalEntityModels = {" + EOL
@@ -116,10 +107,17 @@ module.exports = {
       + "    \"tag\": { entity: 'taxonomy_term', bundle: 'tags' }  // Map 'tag' model to 'taxonomy-term--tags'" + EOL
       + "  };" + EOL;
 
-    return this.insertIntoFile('config/environment.js', emberDataDrupalConfig, {
-      before: '  if (environment ==='
+    const self = this;
+
+    self.insertIntoFile('config/environment.js', appConfig, {
+      after: "APP: {\n"
     }).then(() => {
-      this.ui.writeLine(chalk.green('Added emberDataDrupalConfig mapping to ') + 'config/environment.js');
+      return self.insertIntoFile('config/environment.js', emberDataDrupalConfig, {
+          before: "  if (environment ==="
+        })
+        .then(() => {
+          this.ui.writeLine(chalk.green('Added Drupal integration configuration to ') + 'config/environment.js');
+        });
     });
   }
 };
