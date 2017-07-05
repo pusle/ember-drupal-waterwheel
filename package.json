@@ -1,6 +1,6 @@
 {
   "name": "ember-drupal-waterwheel",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Helps with integrating Ember and Drupal using JSON API.",
   "keywords": [
     "ember-addon",
