@@ -148,7 +148,7 @@ For running in production, you'll want to do some research. Some helpful resourc
 
 ### Running Using FastBoot (Server-side Rendering) [Experimental]
 
-Ember provides the FastBoot addon for server-side rendering. Server-side redering has the advantages of allowing your
+Ember provides the FastBoot addon for server-side rendering. Server-side rendering has the advantages of allowing your
 app to work on browsers that don't have JavaScript enabled, and can also help many search engines to index your app's
 content. It may also speed up initial page load times. **(Note that FastBoot is considered experimental until it reaches
 its 1.0 release, and as such is not guaranteed to work!)**
